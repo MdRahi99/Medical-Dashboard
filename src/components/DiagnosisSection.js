@@ -1,6 +1,6 @@
 // components/DiagnosisSection.js
 import React from 'react';
-import { ArrowsPointingOutIcon, ArrowsPointingInIcon } from '@heroicons/react/24/outline';
+import TopTitle from './shared/TopTitle';
 
 const DiagnosisSection = ({ isExpanded, onExpand }) => {
   const diagnoses = [
@@ -21,27 +21,7 @@ const DiagnosisSection = ({ isExpanded, onExpand }) => {
   return (
     <div className="h-full flex flex-col box-border">
       {/* Header mit Überschrift und Buttons */}
-      <div className="flex items-center justify-between px-4 pt-4">
-        <div className="flex items-center space-x-2">
-          <h3 className="text-xl font-semibold text-secondary">Diagnose</h3>
-          <button
-            className="bg-blue-500 text-white px-3 py-1 rounded hover:bg-blue-700 text-xs"
-            onClick={() => console.log('Quelle Button geklickt')}
-          >
-            Quelle
-          </button>
-        </div>
-        <button
-          className="text-gray-600 hover:text-gray-800"
-          onClick={onExpand}
-        >
-          {isExpanded ? (
-            <ArrowsPointingInIcon className="h-5 w-5" />
-          ) : (
-            <ArrowsPointingOutIcon className="h-5 w-5" />
-          )}
-        </button>
-      </div>
+      <TopTitle title="Diagnose" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
       {/* Tabelle */}
       <div className="bg-white border border-gray-300 shadow-lg rounded-lg flex-grow overflow-y-auto mx-4 mb-4">
         <table className="min-w-full bg-white text-xs relative">
