@@ -25,7 +25,7 @@ function App() {
             {/* Left Column (Document Info and Summary) */}
             <div className="flex flex-col h-full border-b md:border-b-0 md:border-r border-gray-300">
               {/* Document Information */}
-              <div className="h-[50vh] border-b border-gray-300 bg-white">
+              <div className="h-auto md:h-[50vh] border-b border-gray-300 bg-white">
                 <DocumentInfoSection
                   isExpanded={false}
                   onExpand={() => handleExpand('documentInfo')}
