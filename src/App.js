@@ -41,7 +41,7 @@ function App() {
             </div>
 
             {/* Middle Column (Medication and Diagnosis) */}
-            <div className="flex flex-col h-full md:border-r border-gray-300">
+            <div className="flex flex-col h-full">
               {/* Medication Section */}
               <div className="h-[50vh] bg-white">
                 <MedicationSection
