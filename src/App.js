@@ -17,7 +17,7 @@ function App() {
   };
 
   return (
-    <div className="bg-gray-100 h-screen overflow-hidden">
+    <div className="bg-gray-100 min-h-screen overflow-hidden">
       <div className="grid grid-cols-1 md:grid-cols-3 h-full">
         {/* Left and Middle Columns */}
         {!expandedSection && (
@@ -25,7 +25,7 @@ function App() {
             {/* Left Column (Document Info and Summary) */}
             <div className="flex flex-col h-full border-b md:border-b-0 md:border-r border-gray-300">
               {/* Document Information */}
-              <div className="h-auto md:h-[50vh] border-b border-gray-300 bg-white">
+              <div className="h-[50vh] border-b border-gray-300 bg-white">
                 <DocumentInfoSection
                   isExpanded={false}
                   onExpand={() => handleExpand('documentInfo')}

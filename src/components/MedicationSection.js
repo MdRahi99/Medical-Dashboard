@@ -1,10 +1,8 @@
-// components/MedicationSection.js
 import React from 'react';
 import TopTitle from './shared/TopTitle';
 
 const MedicationSection = ({ isExpanded, onExpand }) => {
   const medications = [
-    // Alle Medikamente hier einfügen
     { name: 'CLORAZEPATE Zentiva Filmtabl 20 mg 20 Stk', schedule: '1-1-0-1' },
     { name: 'DAFALGAN Tabl 500 mg (neu) 30 Stk', schedule: '1-0-1-0' },
     { name: 'IBUPROFEN Mylan Filmtabl 600 mg 100 Stk', schedule: '0-0-0-1' },
@@ -13,84 +11,56 @@ const MedicationSection = ({ isExpanded, onExpand }) => {
     { name: 'DIAZEPAM Desitin Rectiole 5 mg 5 ml 10 Stk', schedule: '0-0-1-0' },
     { name: 'NOVALGIN Tropfen 500 mg/ml 20 ml', schedule: '1-1-1-1' },
     { name: 'ASPIRIN Cardio Filmtabl 100 mg 28 Stk', schedule: '1-0-0-0' },
-    // Weitere Medikamente hinzufügen
   ];
 
   return (
-    <div className="h-full flex flex-col box-border">
-      {/* Header mit Überschrift und Buttons */}
+    <div className="h-full flex flex-col box-border no-scrollbar">
       <TopTitle title="Medikation" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
-      {/* Tabelle */}
-      <div className="bg-white border border-gray-300 shadow-lg rounded-lg flex-grow overflow-y-auto mx-4 mb-4">
-        <table className="min-w-full bg-white text-xs relative">
-          <thead className="sticky top-0 bg-white">
-            <tr className="divide-y divide-gray-300">
-              <th className="py-2 px-4 text-left font-medium text-gray-600 uppercase tracking-wider w-1/2">
-                Name
-              </th>
-              <th className="py-2 px-4 text-left font-medium text-gray-600 uppercase tracking-wider">
-                Schema
-              </th>
-              <th className="py-2 px-4 text-left font-medium text-gray-600 uppercase tracking-wider">
-                Aktion
-              </th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-gray-300">
-            {medications.map((medication, index) => {
-              // Hintergrundfarbe und Buttontext basierend auf dem Index festlegen
-              let rowBgColor = '';
-              let buttonText = 'Hinzufügen';
-              let showButton = true;
-              let buttonColor = 'bg-blue-500 hover:bg-blue-700';
+      <div className="bg-gray-50 rounded-lg flex-grow overflow-y-auto mx-4 mb-4 p-3">
+        <div className="grid grid-cols-1 gap-3">
+          {medications.map((medication, index) => {
+            let cardBgColor = 'bg-white';
+            let buttonText = 'Hinzufügen';
+            let showButton = true;
+            let buttonColor = 'bg-blue-500 hover:bg-blue-700';
 
-              if (index === 2) {
-                // 3. Medikament
-                rowBgColor = 'bg-yellow-100';
-                buttonText = 'Ändern';
-                buttonColor = 'bg-yellow-500 hover:bg-yellow-700';
-              } else if (index === 3) {
-                // 4. Medikament
-                rowBgColor = 'bg-red-100';
-                buttonText = 'Löschen';
-                buttonColor = 'bg-red-500 hover:bg-red-700';
-              } else if (index >= 4) {
-                // Ab dem 5. Medikament
-                rowBgColor = 'bg-green-100';
-                showButton = false;
-              }
+            if (index === 2) {
+              cardBgColor = 'bg-yellow-100';
+              buttonText = 'Ändern';
+              buttonColor = 'bg-yellow-500 hover:bg-yellow-700';
+            } else if (index === 3) {
+              cardBgColor = 'bg-red-100';
+              buttonText = 'Löschen';
+              buttonColor = 'bg-red-500 hover:bg-red-700';
+            } else if (index >= 4) {
+              cardBgColor = 'bg-green-100';
+              showButton = false;
+            }
 
-              return (
-                <tr key={index} className={`${rowBgColor}`}>
-                  <td className="py-2 px-4">{medication.name}</td>
-                  <td className="py-2 px-4">{medication.schedule}</td>
-                  <td className="py-2 px-4">
+            return (
+              <div key={index} className={`${cardBgColor} rounded-lg shadow-sm overflow-hidden font-roboto`}>
+                <div className="p-4 flex flex-col">
+                  <div className='flex flex-col justify-start'>
+                    <h3 className="font-semibold mb-2 text-sm">{medication.name}</h3>
+                    <p className="text-gray-600 mb-4 text-xs">Schema: {medication.schedule}</p>
+                  </div>
+                  <div className='flex items-end justify-end'>
                     {showButton && (
                       <button
-                        className={`${buttonColor} text-white px-3 py-1 rounded w-full`}
+                        className={`${buttonColor} text-white p-1.5 rounded-3xl w-24 text-xs`}
                       >
                         {buttonText}
                       </button>
                     )}
-                  </td>
-                </tr>
-              );
-            })}
-          </tbody>
-        </table>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
 };
 
 export default MedicationSection;
-
-
-
-
-
-
-
-
-
-

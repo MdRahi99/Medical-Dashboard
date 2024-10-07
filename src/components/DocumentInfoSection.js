@@ -17,10 +17,10 @@ const DocumentInfoSection = ({ isExpanded, onExpand }) => {
       {/* Header mit Überschrift und Buttons */}
       <TopTitle title="Dokumentinformationen" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
       {/* Inhalt */}
-      <div className={"font-poppins bg-gray-100 flex flex-col justify-between gap-2 rounded-lg flex-grow mx-4 mb-4 p-1"}>
-        <div className='bg-white flex flex-col justify-between p-2 gap-2 rounded-lg h-full'>
+      <div className={"font-poppins bg-gray-50 flex flex-col justify-between gap-2 rounded-lg flex-grow mx-4 mb-4 p-2 capitalize"}>
+        <div className='flex flex-col justify-between gap-2 rounded-lg h-full'>
           {data.map((item, index) => (
-            <div key={index} className="flex justify-between bg-gray-100 px-4 py-2 rounded-lg">
+            <div key={index} className="flex justify-between bg-white px-4 py-2 rounded-lg">
               <span className="font-medium">{item.label}</span>
               <span>{item.value}</span>
             </div>

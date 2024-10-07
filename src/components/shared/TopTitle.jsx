@@ -3,13 +3,13 @@ import React from 'react';
 
 const TopTitle = ({ title, status, onExpand, isExpanded }) => {
     return (
-        <div className="flex items-center justify-between px-4 pt-4 pb-2">
+        <div className="flex items-center justify-between px-4 pt-4 pb-2 capitalize">
             <div className="flex items-center space-x-2">
                 <h3 className="text-xl font-semibold font-roboto">
                     {title}
                 </h3>
                 <button
-                    className="bg-[#3479bf] text-white px-4 py-1 rounded-xl hover:bg-[#2e68a3] text-xs"
+                    className="bg-[#3479bf] text-white px-4 py-1 rounded-xl hover:bg-[#2e68a3] text-xs capitalize"
                     onClick={() => console.log('Quelle Button geklickt')}
                 >
                     {status}
