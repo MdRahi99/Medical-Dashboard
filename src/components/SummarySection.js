@@ -32,7 +32,7 @@ const SummarySection = ({ isExpanded, onExpand }) => {
   );
 
   return (
-    <div className="h-full flex flex-col">
+    <div className={`${isExpanded ? 'h-auto md:h-[100vh] overflow-y-auto' : 'h-full'} flex flex-col`}>
       <TopTitle
         title="Zusammenfassung"
         status="Quelle"

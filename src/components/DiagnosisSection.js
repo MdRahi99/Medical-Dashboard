@@ -17,7 +17,7 @@ const DiagnosisSection = ({ isExpanded, onExpand }) => {
   ];
 
   return (
-    <div className="h-full flex flex-col box-border no-scrollbar">
+    <div className={`${isExpanded ? 'h-auto md:h-[100vh] overflow-y-auto' : 'h-full'} flex flex-col box-border no-scrollbar`}>
       <TopTitle title="Diagnose" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
       <div className="bg-gray-50 rounded-lg flex-grow overflow-y-auto mx-4 mb-4 p-3">
         <div className="grid grid-cols-1 gap-3">

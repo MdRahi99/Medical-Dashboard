@@ -91,7 +91,7 @@ function App() {
         )}
 
         {/* Right Column (PDF Viewer) */}
-        <div className="h-full bg-white">
+        <div className="h-full md:h-[100vh] bg-white">
           <PDFViewer />
         </div>
       </div>

@@ -13,7 +13,7 @@ const DocumentInfoSection = ({ isExpanded, onExpand }) => {
   ];
 
   return (
-    <div className="h-full flex flex-col">
+    <div className={`${isExpanded ? 'h-auto md:h-[100vh] overflow-y-auto' : 'h-full'} flex flex-col`}>
       {/* Header mit Überschrift und Buttons */}
       <TopTitle title="Dokumentinformationen" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
       {/* Inhalt */}
