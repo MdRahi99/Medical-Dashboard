@@ -23,9 +23,9 @@ function App() {
         {!expandedSection && (
           <>
             {/* Left Column (Document Info and Summary) */}
-            <div className="flex flex-col h-full border-b md:border-b-0 md:border-r border-gray-300">
+            <div className="flex flex-col h-full">
               {/* Document Information */}
-              <div className="h-auto md:h-[50vh] border-b border-gray-300 bg-white">
+              <div className="h-auto md:h-[50vh] bg-white">
                 <DocumentInfoSection
                   isExpanded={false}
                   onExpand={() => handleExpand('documentInfo')}
@@ -41,9 +41,9 @@ function App() {
             </div>
 
             {/* Middle Column (Medication and Diagnosis) */}
-            <div className="flex flex-col h-full border-b md:border-b-0 md:border-r border-gray-300">
+            <div className="flex flex-col h-full md:border-r border-gray-300">
               {/* Medication Section */}
-              <div className="h-[50vh] border-b border-gray-300 bg-white">
+              <div className="h-[50vh] bg-white">
                 <MedicationSection
                   isExpanded={false}
                   onExpand={() => handleExpand('medication')}
