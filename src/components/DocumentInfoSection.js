@@ -18,14 +18,36 @@ const DocumentInfoSection = ({ isExpanded, onExpand }) => {
       <TopTitle title="Dokumentinformationen" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
       {/* Inhalt */}
       <div className={"font-poppins bg-gray-50 flex flex-col justify-between gap-2 rounded-lg flex-grow mx-4 mb-4 p-3 capitalize"}>
-        <div className='flex flex-col justify-between gap-2 rounded-lg h-full'>
-          {data.map((item, index) => (
-            <div key={index} className="flex justify-between bg-white px-4 py-2 rounded-lg">
-              <span className="font-medium">{item.label}</span>
-              <span>{item.value}</span>
+        {
+          !isExpanded ?
+            <div className='flex flex-col justify-between gap-2 rounded-lg h-full'>
+              {data.map((item, index) => (
+                <div key={index} className="flex justify-between bg-white px-4 py-2 rounded-lg">
+                  <span className="font-medium">{item.label}</span>
+                  <span>{item.value}</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </div>
+            :
+            <div className='flex flex-col md:flex-row items-center justify-between gap-4'>
+              <div className='bg-white p-4 md:p-8 rounded-lg w-full flex flex-col gap-8'>
+                {data.slice(0, 3).map((item, index) => (
+                  <div key={index} className="flex md:text-lg justify-between">
+                    <span className="font-medium">{item.label}</span>
+                    <span>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+              <div className='bg-white p-4 md:p-8 rounded-lg w-full flex flex-col gap-8'>
+                {data.slice(3, 6).map((item, index) => (
+                  <div key={index} className="flex md:text-lg justify-between">
+                    <span className="font-medium">{item.label}</span>
+                    <span>{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+        }
       </div>
     </div>
   );
