@@ -40,7 +40,7 @@ const SummarySection = ({ isExpanded, onExpand }) => {
         isExpanded={isExpanded}
       />
       <div className="flex-grow bg-gray-50 p-3 rounded-lg mx-4 mb-4 overflow-auto">
-        <div className="space-y-4">
+        <div className={`${isExpanded ? 'grid-cols-1 md:grid-cols-2 gap-6' : 'grid-cols-1 gap-4'} grid`}>
           {renderContent("Subjektiv", summaryData.subjektiv)}
           {renderContent("Objektiv", summaryData.objektiv)}
           {renderContent("Assessment", summaryData.assessment)}
