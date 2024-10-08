@@ -13,8 +13,8 @@ const DynamicTab = ({ sections }) => {
               key={section.name}
               className={`px-4 py-2 font-roboto font-semibold transition-colors duration-300 ${
                 activeTab === section.name
-                  ? 'border-b-2 border-[#2E68A3] text-[#2E68A3]'
-                  : 'text-[#2c2c2c] hover:text-[#2E68A3] hover:border-b-2 border-[#2E68A3] transition-all duration-100 ease-in-out'
+                  ? 'text-white bg-[#2E68A3] rounded-t-lg'
+                  : 'text-[#2c2c2c] hover:text-white hover:bg-[#2E68A3] rounded-t-lg transition-all duration-100 ease-in-out'
               }`}
               onClick={() => setActiveTab(section.name)}
             >
