@@ -1,7 +1,7 @@
 import React from 'react';
 import TopTitle from './shared/TopTitle';
 
-const MedicationSection = ({ isExpanded, onExpand }) => {
+const MedicationSection = () => {
   const medications = [
     { name: 'CLORAZEPATE Zentiva Filmtabl 20 mg 20 Stk', schedule: '1-1-0-1' },
     { name: 'DAFALGAN Tabl 500 mg (neu) 30 Stk', schedule: '1-0-1-0' },
@@ -14,49 +14,52 @@ const MedicationSection = ({ isExpanded, onExpand }) => {
   ];
 
   return (
-    <div className={`${isExpanded ? 'h-auto md:h-[100vh] overflow-y-auto' : 'h-full'} flex flex-col box-border no-scrollbar`}>
-      <TopTitle title="Medikation" status="Quelle" onExpand={onExpand} isExpanded={isExpanded} />
-      <div className="bg-gray-50 rounded-lg flex-grow overflow-y-auto mx-4 mb-4 p-3">
-        <div className={`${isExpanded ? 'grid-cols-1 md:grid-cols-2 gap-6' : 'grid-cols-1 gap-3'} grid`}>
-          {medications.map((medication, index) => {
-            let cardBgColor = 'bg-white';
-            let buttonText = 'Hinzufügen';
-            let showButton = true;
-            let buttonColor = 'bg-blue-500 hover:bg-blue-700';
-
-            if (index === 2) {
-              cardBgColor = 'bg-yellow-100';
-              buttonText = 'Ändern';
-              buttonColor = 'bg-yellow-500 hover:bg-yellow-700';
-            } else if (index === 3) {
-              cardBgColor = 'bg-red-100';
-              buttonText = 'Löschen';
-              buttonColor = 'bg-red-500 hover:bg-red-700';
-            } else if (index >= 4) {
-              cardBgColor = 'bg-green-100';
-              showButton = false;
-            }
-
-            return (
-              <div key={index} className={`${cardBgColor} rounded-lg shadow-sm overflow-hidden font-roboto`}>
-                <div className="p-4 flex flex-col">
-                  <div className='flex flex-col justify-start'>
-                    <h3 className="font-semibold mb-2 text-sm">{medication.name}</h3>
-                    <p className="text-gray-600 mb-4 text-xs">Schema: {medication.schedule}</p>
-                  </div>
-                  <div className='flex items-end justify-end'>
-                    {showButton && (
-                      <button
-                        className={`${buttonColor} text-white p-1.5 rounded-3xl w-24 text-xs`}
-                      >
-                        {buttonText}
-                      </button>
-                    )}
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+    <div className="h-full flex flex-col box-border">
+      <TopTitle title="Medikation" status="Quelle" />
+      {/* Table Container */}
+      <div className="rounded-lg md:border flex-grow overflow-x-auto mx-4 mb-4 md:p-3">
+        <div className="min-w-[640px]"> {/* Minimum width container */}
+          <table className="w-full border-separate border-spacing-y-3">
+            {/* Table Head */}
+            <thead>
+              <tr className="bg-[#d6e8fb]">
+                <th className="p-3 text-left text-sm font-semibold uppercase rounded-l-lg">Name</th>
+                <th className="p-3 text-left text-sm font-semibold uppercase">Schema</th>
+                <th className="p-3 text-end pr-[3rem] text-sm font-semibold uppercase rounded-r-lg">Aktion</th>
+              </tr>
+            </thead>
+            {/* Table Body */}
+            <tbody>
+              {medications.map((medication, index) => (
+                <tr key={index} className="bg-[#EFF5FB] rounded-lg">
+                  <td className="px-3 py-2 text-sm rounded-l-lg">{medication.name}</td>
+                  <td className="px-3 py-2 text-sm">{medication.schedule}</td>
+                  <td className="px-3 py-2 text-sm flex justify-end rounded-r-lg">
+                    {/* Different action button colors */}
+                    <button
+                      className={`${
+                        index === 2
+                          ? 'bg-yellow-200 text-yellow-800 hover:bg-yellow-400 hover:text-white'
+                          : index === 3
+                          ? 'bg-red-200 text-red-800 hover:bg-red-400 hover:text-white'
+                          : index >= 4
+                          ? 'bg-green-200 text-green-800 hover:bg-green-400 hover:text-white'
+                          : 'bg-blue-200 text-blue-800 hover:bg-blue-400 hover:text-white'
+                      } w-28 text-xs py-2 px-4 rounded-md`}
+                    >
+                      {index === 2
+                        ? 'Ändern'
+                        : index === 3
+                        ? 'Löschen'
+                        : index >= 4
+                        ? 'Ansehen'
+                        : 'Hinzufügen'}
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
