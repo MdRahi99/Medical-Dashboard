@@ -14,7 +14,7 @@ const DocumentInfoSection = () => {
   return (
     <div>
       <TopTitle title="Dokumentinformationen" status="Quelle" />
-      <div className="md:p-8 p-4 border shadow rounded-xl flex flex-col items-center gap-8 mx-4">
+      <div className="md:p-8 p-0 md:border md:shadow rounded-xl flex flex-col items-center gap-8 mx-4">
         {/* Profile Section */}
         <div className="flex flex-col items-center gap-3">
           <div className="w-24 h-24 rounded-full bg-[#a3ccf6] flex items-center justify-center text-white">
