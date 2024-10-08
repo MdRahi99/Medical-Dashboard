@@ -24,3 +24,18 @@
 ::-webkit-scrollbar-thumb:hover {
     background-color: #d3d3d3;
 }
+
+/* Hide Scrollbar on Mobile Devices */
+@media (max-width: 640px) {
+
+    /* Hide scrollbar for Webkit browsers (Chrome, Safari, Edge) */
+    ::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* For Firefox */
+    html {
+        scrollbar-width: none;
+        /* Hide scrollbar */
+    }
+}
