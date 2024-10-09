@@ -4,7 +4,7 @@ const DynamicTab = ({ sections }) => {
   const [activeTab, setActiveTab] = useState(sections[0].name);
 
   return (
-    <div className="w-full space-y-8 md:space-y-12">
+    <div className="w-full space-y-4">
       {/* Tab Headers */}
       <div className="sticky top-0 z-10 bg-white border-b border-gray-200 px-4">
         <div className="flex items-center gap-6 overflow-auto no-scrollbar md:gap-12">

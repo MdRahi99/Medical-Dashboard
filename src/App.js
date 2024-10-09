@@ -6,9 +6,15 @@ import MedicationSection from './components/MedicationSection';
 import DiagnosisSection from './components/DiagnosisSection';
 import PDFViewer from './components/PDFViewer';
 import DynamicTab from './components/shared/DynamicTab';
+import OverviewSection from './components/OverviewSection';
 
 function App() {
   const sections = [
+    {
+      name: 'overview',
+      label: 'Overview',
+      component: <OverviewSection />,
+    },
     {
       name: 'dokumentinformationen',
       label: 'Dokumentinformationen',
