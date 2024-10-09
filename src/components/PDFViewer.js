@@ -3,12 +3,12 @@ import { DocumentArrowUpIcon, DocumentMagnifyingGlassIcon } from '@heroicons/rea
 
 const PDFViewer = () => {
   return (
-    <div className="p-6 h-full flex flex-col bg-white rounded-xl">
+    <div className="p-6 h-full flex flex-col">
       <h2 className="text-2xl font-semibold mb-4 flex items-center">
         <DocumentMagnifyingGlassIcon className="w-8 h-8 mr-2" />
         PDF-Viewer
       </h2>
-      <div className="flex-grow border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-gray-100 p-10">
+      <div className="flex-grow border-2 border-dashed border-gray-300 rounded-lg flex items-center justify-center bg-[#EFF5FB] p-10">
         <div className="text-center">
           <DocumentMagnifyingGlassIcon className="w-16 h-16 mx-auto text-gray-400" />
           <p className="mt-2 text-gray-500">Platzhalter für PDF-Inhalt.</p>

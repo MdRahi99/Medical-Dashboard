@@ -62,7 +62,7 @@ const MedicationSection = ({ minimized }) => {
           {medications.map((medication, index) => (
             <li key={index} className="bg-[#EFF5FB] rounded-lg p-4 text-sm flex flex-col gap-4 md:flex-row justify-between md:items-center">
               <div className="flex-grow">
-                <div className="font-semibold text-sm truncate pb-2">{medication.name}</div>
+                <div className="font-semibold text-sm truncate pb-2">{`${medication?.name?.length > 40 ? `${medication?.name?.slice(0, 40)}...` : medication?.name}`}</div>
                 <div className="text-gray-600">Schema: {medication.schedule}</div>
               </div>
               <div className='w-full flex items-end justify-end'>
