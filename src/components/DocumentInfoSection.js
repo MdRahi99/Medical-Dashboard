@@ -65,9 +65,9 @@ const DocumentInfoSection = ({ minimized }) => {
           <div className="flex-grow overflow-y-auto">
             <div className="flex flex-col gap-2 text-sm">
               {data.map((item, index) => (
-                <div key={index} className="flex justify-between items-center p-2 rounded-md bg-[#EFF5FB]">
-                  <span className="font-medium text-gray-700">{item.label}</span>
-                  <span className="text-gray-600">{item.value}</span>
+                <div key={index} className="flex justify-between items-center p-3 rounded-md bg-[#EFF5FB]">
+                  <span className="font-semibold">{item.label}</span>
+                  <span className="text-gray-700">{item.value}</span>
                 </div>
               ))}
             </div>
