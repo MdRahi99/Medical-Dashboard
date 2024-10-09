@@ -12,7 +12,7 @@ const DocumentInfoSection = ({ minimized }) => {
   ];
 
   return (
-    <div>
+    <div className={minimized ? 'h-[40vh]' : ''}>
       {!minimized ? (
         <div>
           <TopTitle title="Dokumentinformationen" status="Quelle" />
@@ -27,7 +27,7 @@ const DocumentInfoSection = ({ minimized }) => {
               <h2 className="text-2xl font-semibold text-gray-800">Max Mustermann</h2>
               <span className="text-gray-700">Krankenhaus Berlin</span>
             </div>
-
+            
             {/* Document Information */}
             <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-4">
               {data.map((item, index) => (
@@ -40,32 +40,37 @@ const DocumentInfoSection = ({ minimized }) => {
           </div>
         </div>
       ) : (
-        <div className="w-full p-4 border rounded-xl">
-          <div className="flex items-center gap-4">
-            {/* Smaller profile */}
-            <div className="w-16 h-16 rounded-full bg-[#a3ccf6] flex items-center justify-center text-white">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-8">
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
-                />
-              </svg>
-            </div>
-            <div className="flex flex-col">
-              <h2 className="text-lg font-semibold text-gray-800">Max Mustermann</h2>
-              <span className="text-sm text-gray-600">Krankenhaus Berlin</span>
-            </div>
-          </div>
-
-          {/* Compact Document Info */}
-          <div className="flex flex-col mt-2 gap-2 text-sm md:max-h-[30vh] overflow-y-auto">
-            {data.map((item, index) => (
-              <div key={index} className="flex justify-between items-center p-2 rounded-md bg-[#EFF5FB]">
-                <span className="font-medium text-gray-700">{item.label}</span>
-                <span className="text-gray-600">{item.value}</span>
+        <div className="w-full p-2 border rounded-xl h-full flex flex-col">
+          <div className='flex items-center justify-between mb-2'>
+            <div className="flex items-center gap-4">
+              {/* Smaller profile */}
+              <div className="w-10 h-10 rounded-full bg-[#a3ccf6] flex items-center justify-center text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z"
+                  />
+                </svg>
               </div>
-            ))}
+              <div className="flex flex-col">
+                <h2 className="text-lg font-semibold">Max Mustermann</h2>
+                <span className="text-sm">Krankenhaus Berlin</span>
+              </div>
+            </div>
+            <TopTitle status="Quelle" minimized={minimized} />
+          </div>
+          
+          {/* Compact Document Info */}
+          <div className="flex-grow overflow-y-auto">
+            <div className="flex flex-col gap-2 text-sm">
+              {data.map((item, index) => (
+                <div key={index} className="flex justify-between items-center p-2 rounded-md bg-[#EFF5FB]">
+                  <span className="font-medium text-gray-700">{item.label}</span>
+                  <span className="text-gray-600">{item.value}</span>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       )}
