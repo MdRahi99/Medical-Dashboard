@@ -66,7 +66,7 @@ const DiagnosisSection = ({ minimized }) => {
           {diagnoses.map((diagnosis, index) => (
             <li key={index} className="bg-[#EFF5FB] rounded-lg p-4 text-sm flex flex-col gap-4 md:flex-row justify-between md:items-center">
               <div className="flex-grow">
-                <div className="font-semibold text-sm truncate pb-2">{`${diagnosis?.name?.length > 40 ? `${diagnosis?.name?.slice(0, 40)}...` : diagnosis?.name}`}</div>
+                <div className="font-semibold text-sm truncate pb-2">{`${diagnosis?.name?.length > 30 ? `${diagnosis?.name?.slice(0, 30)}...` : diagnosis?.name}`}</div>
                 <div className="text-gray-600">ICD10: {diagnosis.icd10}</div>
               </div>
               <div className='w-full flex items-end justify-end'>
