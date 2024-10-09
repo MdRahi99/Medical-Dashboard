@@ -1,7 +1,7 @@
 import React from 'react';
 import TopTitle from './shared/TopTitle';
 
-const DiagnosisSection = () => {
+const DiagnosisSection = ({ minimized }) => {
   const diagnoses = [
     { icd10: 'I10', name: 'Essentielle (primäre) Hypertonie' },
     { icd10: 'E11', name: 'Nicht-insulinabhängiger Diabetes mellitus' },
@@ -16,14 +16,12 @@ const DiagnosisSection = () => {
     { icd10: 'J06.9', name: 'Akute Infektion der oberen Atemwege, nicht näher bezeichnet' },
   ];
 
-  return (
+  const renderExpandedView = () => (
     <div className="h-full flex flex-col box-border">
       <TopTitle title="Diagnose" status="Quelle" />
-      {/* Table Container */}
       <div className="rounded-lg md:border flex-grow overflow-x-auto mx-4 mb-4 md:p-3">
-        <div className="min-w-[640px]"> {/* Minimum width container */}
+        <div className="min-w-[640px]">
           <table className="w-full border-separate border-spacing-y-3">
-            {/* Table Head */}
             <thead>
               <tr className="bg-[#d6e8fb]">
                 <th className="p-3 text-left text-sm font-semibold uppercase rounded-l-lg">ICD10</th>
@@ -31,14 +29,12 @@ const DiagnosisSection = () => {
                 <th className="p-3 text-end pr-[3rem] text-sm font-semibold uppercase rounded-r-lg">Aktion</th>
               </tr>
             </thead>
-            {/* Table Body */}
             <tbody>
               {diagnoses.map((diagnosis, index) => (
                 <tr key={index} className="bg-[#EFF5FB] rounded-lg">
                   <td className="px-3 py-2 text-sm rounded-l-lg">{diagnosis.icd10}</td>
                   <td className="px-3 py-2 text-sm">{diagnosis.name}</td>
                   <td className="px-3 py-2 text-sm flex justify-end rounded-r-lg">
-                    {/* Different action button colors */}
                     <button
                       className={`${
                         index === 2
@@ -50,13 +46,7 @@ const DiagnosisSection = () => {
                           : 'bg-blue-200 text-blue-800 hover:bg-blue-400 hover:text-white'
                       } w-28 text-xs py-2 px-4 rounded-md`}
                     >
-                      {index === 2
-                        ? 'Ändern'
-                        : index === 3
-                        ? 'Löschen'
-                        : index >= 4
-                        ? 'Ansehen'
-                        : 'Hinzufügen'}
+                      {index === 2 ? 'Ändern' : index === 3 ? 'Löschen' : index >= 4 ? 'Ansehen' : 'Hinzufügen'}
                     </button>
                   </td>
                 </tr>
@@ -65,6 +55,45 @@ const DiagnosisSection = () => {
           </table>
         </div>
       </div>
+    </div>
+  );
+
+  const renderMinimizedView = () => (
+    <div className='w-full p-2 border rounded-xl h-[40vh] flex flex-col'>
+      <TopTitle title="Diagnose" status="Quelle" minimized={minimized} />
+      <div className="flex-grow overflow-y-auto mt-2">
+        <ul className="space-y-2">
+          {diagnoses.map((diagnosis, index) => (
+            <li key={index} className="bg-[#EFF5FB] rounded-lg p-4 text-sm flex flex-col gap-4 md:flex-row justify-between md:items-center">
+              <div className="flex-grow">
+                <div className="font-semibold text-sm truncate pb-2">{`${diagnosis?.name?.length > 40 ? `${diagnosis?.name?.slice(0, 40)}...` : diagnosis?.name}`}</div>
+                <div className="text-gray-600">ICD10: {diagnosis.icd10}</div>
+              </div>
+              <div className='w-full flex items-end justify-end'>
+                <button
+                  className={`${
+                    index === 2
+                      ? 'bg-yellow-200 text-yellow-800'
+                      : index === 3
+                      ? 'bg-red-200 text-red-800'
+                      : index >= 4
+                      ? 'bg-green-200 text-green-800'
+                      : 'bg-blue-200 text-blue-800'
+                  } text-xs py-2 px-3 w-24 rounded-md whitespace-nowrap`}
+                >
+                  {index === 2 ? 'Ändern' : index === 3 ? 'Löschen' : index >= 4 ? 'Ansehen' : 'Hinzufügen'}
+                </button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+
+  return (
+    <div>
+      {!minimized ? renderExpandedView() : renderMinimizedView()}
     </div>
   );
 };

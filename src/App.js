@@ -6,9 +6,15 @@ import MedicationSection from './components/MedicationSection';
 import DiagnosisSection from './components/DiagnosisSection';
 import PDFViewer from './components/PDFViewer';
 import DynamicTab from './components/shared/DynamicTab';
+import OverviewSection from './components/OverviewSection';
 
 function App() {
   const sections = [
+    {
+      name: 'overview',
+      label: 'Overview',
+      component: <OverviewSection />,
+    },
     {
       name: 'dokumentinformationen',
       label: 'Dokumentinformationen',
@@ -39,7 +45,7 @@ function App() {
       </div>
 
       {/* Right Column (PDF Viewer) */}
-      <div className="h-full lg:w-1/3 w-full">
+      <div className="h-auto md:h-[95vh] bg-white rounded-xl lg:w-1/3 w-full">
         <PDFViewer />
       </div>
     </div>
